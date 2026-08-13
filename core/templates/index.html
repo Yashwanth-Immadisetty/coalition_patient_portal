@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech.Care - Patient Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Top Navigation Header -->
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-icon">✦</span> Tech.Care
+        </div>
+        <nav class="nav-links">
+            <a href="#">Overview</a>
+            <a href="#" class="active">Patients</a>
+            <a href="#">Schedule</a>
+            <a href="#">Message</a>
+            <a href="#">Transactions</a>
+        </nav>
+        <div class="user-profile">
+            <img src="https://fedskillstest.coalitiontechnologies.workers.dev/images/dr-jose-simmons.png" alt="Doctor" class="avatar">
+            <div class="user-info">
+                <span class="name">Dr. Jose Simmons</span>
+                <span class="role">General Practitioner</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="dashboard-container">
+        
+        <!-- Sidebar: Patient List -->
+        <aside class="card patient-sidebar">
+            <h2>Patients</h2>
+            <div id="patient-list" class="patient-list-container">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </aside>
+
+        <!-- Middle Content: Diagnosis & Chart -->
+        <section class="main-content">
+            <div class="card diagnosis-history">
+                <h2>Diagnosis History</h2>
+                <div class="chart-box">
+                    <div class="chart-header">
+                        <h3>Blood Pressure</h3>
+                        <span class="dropdown-label">Last 6 months ▾</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="bpChart"></canvas>
+                        <div class="chart-stats">
+                            <div class="stat-item systolic">
+                                <div>• Systolic</div>
+                                <div class="value" id="systolic-val">--</div>
+                                <div class="status" id="systolic-status">--</div>
+                            </div>
+                            <hr>
+                            <div class="stat-item diastolic">
+                                <div>• Diastolic</div>
+                                <div class="value" id="diastolic-val">--</div>
+                                <div class="status" id="diastolic-status">--</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vitals Cards -->
+                <div class="vitals-grid">
+                    <div class="vital-card respiratory">
+                        <p>Respiratory Rate</p>
+                        <h3 id="respiratory-val">--</h3>
+                        <span id="respiratory-status" class="status-badge">Normal</span>
+                    </div>
+                    <div class="vital-card temp">
+                        <p>Temperature</p>
+                        <h3 id="temp-val">--</h3>
+                        <span id="temp-status" class="status-badge">Normal</span>
+                    </div>
+                    <div class="vital-card heart">
+                        <p>Heart Rate</p>
+                        <h3 id="heart-val">--</h3>
+                        <span id="heart-status" class="status-badge">Lower than Average</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diagnostic List -->
+            <div class="card diagnostic-list">
+                <h2>Diagnostic List</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Problem/Diagnosis</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="diagnostic-tbody">
+                        <!-- Dynamically populated -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Right Sidebar: Jessica Taylor Info & Lab Results -->
+        <aside class="right-sidebar">
+            <div class="card profile-card">
+                <img id="jessica-avatar" class="large-avatar" src="" alt="Jessica Taylor">
+                <h2 id="jessica-name">Jessica Taylor</h2>
+                <div class="info-list">
+                    <div class="info-item">
+                        <span>Date Of Birth</span>
+                        <strong id="jessica-dob">--</strong>
+                    </div>
+                    <div class="info-item">
+                        <span>Gender</span>
+                        <strong id="jessica-gender">--</strong>
+                    </div>
+                    <div class="info-item">
+                        <span>Contact Info.</span>
+                        <strong id="jessica-phone">--</strong>
+                    </div>
+                    <div class="info-item">
+                        <span>Emergency Contacts</span>
+                        <strong id="jessica-emergency">--</strong>
+                    </div>
+                    <div class="info-item">
+                        <span>Insurance Provider</span>
+                        <strong id="jessica-insurance">--</strong>
+                    </div>
+                </div>
+                <button class="btn-primary">Show All Information</button>
+            </div>
+
+            <div class="card lab-results">
+                <h2>Lab Results</h2>
+                <ul id="lab-list">
+                    <!-- Dynamically populated -->
+                </ul>
+            </div>
+        </aside>
+
+    </main>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
