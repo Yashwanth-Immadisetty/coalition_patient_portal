@@ -1,0 +1,8 @@
+[project]
+name = "coalition-patient-portal"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "Django>=3.2.25",
+  "gunicorn>=23.0.0"
+]
